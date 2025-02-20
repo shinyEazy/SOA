@@ -35,3 +35,5 @@ cursor.close()
 db.close()
 
 print("Products inserted successfully.")
+
+# python3 -m venv venv

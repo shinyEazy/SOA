@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-import order_pb2 as order__pb2
+import orders_pb2 as orders__pb2
 
 GRPC_GENERATED_VERSION = '1.70.0'
 GRPC_VERSION = grpc.__version__
@@ -18,7 +18,7 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + f' but the generated code in order_pb2_grpc.py depends on'
+        + f' but the generated code in orders_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
@@ -36,8 +36,8 @@ class OrderServiceStub(object):
         """
         self.CalculateTotal = channel.unary_unary(
                 '/OrderService/CalculateTotal',
-                request_serializer=order__pb2.OrderRequest.SerializeToString,
-                response_deserializer=order__pb2.OrderResponse.FromString,
+                request_serializer=orders__pb2.OrderRequest.SerializeToString,
+                response_deserializer=orders__pb2.OrderResponse.FromString,
                 _registered_method=True)
 
 
@@ -55,8 +55,8 @@ def add_OrderServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'CalculateTotal': grpc.unary_unary_rpc_method_handler(
                     servicer.CalculateTotal,
-                    request_deserializer=order__pb2.OrderRequest.FromString,
-                    response_serializer=order__pb2.OrderResponse.SerializeToString,
+                    request_deserializer=orders__pb2.OrderRequest.FromString,
+                    response_serializer=orders__pb2.OrderResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -84,8 +84,8 @@ class OrderService(object):
             request,
             target,
             '/OrderService/CalculateTotal',
-            order__pb2.OrderRequest.SerializeToString,
-            order__pb2.OrderResponse.FromString,
+            orders__pb2.OrderRequest.SerializeToString,
+            orders__pb2.OrderResponse.FromString,
             options,
             channel_credentials,
             insecure,
